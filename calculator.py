@@ -3,6 +3,7 @@ num1 = float()
 num2 = float()
 operator = str()
 
+
 # define functions for user to enter variables
 # also then confirms if they are valid inputs
 def getnum1():
@@ -29,6 +30,8 @@ def getnum2():
 
 def getoperator():
     global operator
+    global num1
+    global num2
     operator = input('Enter operator: ')
     if operator == '+':
         return
@@ -38,6 +41,14 @@ def getoperator():
         return
     elif operator == '/':
         return
+    elif operator == '^':
+        return
+    # enter 'clear' to set num1 and num2 to 0, then ask for num1 again
+    elif operator == 'clear':
+        num1 = 0
+        num2 = 0
+        getnum1()
+        getoperator()
     else:
         print('Invalid Operator')
         getoperator()
@@ -69,6 +80,11 @@ while True:
         getnum2()
     elif operator == '/':
         num1 = num1 / num2
+        print('=', num1)
+        getoperator()
+        getnum2()
+    elif operator == '^':
+        num1 = num1 ** num2
         print('=', num1)
         getoperator()
         getnum2()
